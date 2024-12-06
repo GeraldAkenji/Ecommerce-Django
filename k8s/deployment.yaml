@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ecommerce 
-        image: geraldakenji/app-image:latest 
+        image: PLEASE_REPLACE_ME
         resources:
           limits:
             memory: "512Mi"
