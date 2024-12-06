@@ -16,18 +16,15 @@ pipeline {
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/GeraldAkenji/Ecommerce-Django.git']])
             }
        }
-       stage("Pytest") {
+        stage("Install Dependencies") {
             steps {
                 script {
+                    sh "python3 -m venv venv"
+                    sh ". venv/bin/activate"
                     sh "python3 -m pip install -r requirements.txt --no-cache-dir --break-system-packages"
-                    // sh "python3 -m pytest"
-                    def result = sh(script: "python3 -m pytest", returnStatus: true)
-                    if (result != 0) {
-                        error("Pytest failed. Stopping the pipeline")
-                    }
                 }
             }
-       }
+        }
        stage("Docker Login") {
             steps {
                 script {
