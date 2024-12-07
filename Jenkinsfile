@@ -5,7 +5,7 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('1ede0dfb-20f1-46cb-9599-1dd484d9b50e')
         IMAGE_NAME = "geraldakenji/app-image:v-0.0${env.BUILD_NUMBER}-stable"
     }
-    // stages {
+    stages {
     //    stage("Clean Workspace") {
     //         steps {
     //             cleanWs()
@@ -64,3 +64,4 @@ pipeline {
             }
        }
     }
+}
