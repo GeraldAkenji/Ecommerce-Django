@@ -6,11 +6,11 @@ pipeline {
         IMAGE_NAME = "geraldakenji/app-image:v-0.0${env.BUILD_NUMBER}-stable"
     }
     stages {
-       stage("Clean Workspace") {
-            steps {
-                cleanWs()
-            }
-       }
+    //    stage("Clean Workspace") {
+    //         steps {
+    //             cleanWs()
+    //         }
+    //    }
     //    stage("Git Checkout") {
     //         steps {
     //             checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/GeraldAkenji/Ecommerce-Django.git']])
