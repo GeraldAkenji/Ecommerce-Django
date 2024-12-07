@@ -5,17 +5,17 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('1ede0dfb-20f1-46cb-9599-1dd484d9b50e')
         IMAGE_NAME = "geraldakenji/app-image:v-0.0${env.BUILD_NUMBER}-stable"
     }
-    stages {
-       stage("Clean Workspace") {
-            steps {
-                cleanWs()
-            }
-       }
-       stage("Git Checkout") {
-            steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/GeraldAkenji/Ecommerce-Django.git']])
-            }
-       }
+    // stages {
+    //    stage("Clean Workspace") {
+    //         steps {
+    //             cleanWs()
+    //         }
+    //    }
+    //    stage("Git Checkout") {
+    //         steps {
+    //             checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/GeraldAkenji/Ecommerce-Django.git']])
+    //         }
+    //    }
     //    stage("Install System Dependencies") {
     //        steps {
     //            sh "apt-get update && apt-get install -y libpq-dev"
