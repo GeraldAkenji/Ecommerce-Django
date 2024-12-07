@@ -11,11 +11,11 @@ pipeline {
                 cleanWs()
             }
        }
-    //    stage("Git Checkout") {
-    //         steps {
-    //             checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/GeraldAkenji/Ecommerce-Django.git']])
-    //         }
-    //    }
+       stage("Git Checkout") {
+            steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/GeraldAkenji/Ecommerce-Django.git']])
+            }
+       }
     //    stage("Install System Dependencies") {
     //        steps {
     //            sh "apt-get update && apt-get install -y libpq-dev"
