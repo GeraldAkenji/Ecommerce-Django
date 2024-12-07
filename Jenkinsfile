@@ -55,7 +55,7 @@ pipeline {
             steps {
                 script {
                     dir('./k8s') {
-                        withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: '', contextName: '', credentialsId: '88a9f11c-11e5-4bdb-b3bd-f63dba417648', namespace: 'gerald-env', serverUrl: '']]) {
+                        withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: '', contextName: '', credentialsId: '3f12ff7b-93cb-4ea5-bc21-79bcf5fb1925', namespace: 'gerald-env', serverUrl: '']]) {
                             sh "sed -i 's|PLEASE_REPLACE_ME|$IMAGE_NAME|g' deployment.yaml"
                             sh "kubectl apply -f ."
                         }
