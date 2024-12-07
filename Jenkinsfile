@@ -11,16 +11,16 @@ pipeline {
                 cleanWs()
             }
        }
-       stage("Git Checkout") {
-            steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/GeraldAkenji/Ecommerce-Django.git']])
-            }
-       }
-       stage("Install System Dependencies") {
-           steps {
-               sh "apt-get update && apt-get install -y libpq-dev"
-           }
-       }
+    //    stage("Git Checkout") {
+    //         steps {
+    //             checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/GeraldAkenji/Ecommerce-Django.git']])
+    //         }
+    //    }
+    //    stage("Install System Dependencies") {
+    //        steps {
+    //            sh "apt-get update && apt-get install -y libpq-dev"
+    //        }
+    //    }
        stage("Install Dependencies") {
             steps {
                 script {
@@ -51,17 +51,17 @@ pipeline {
                 }
             }
        }
-       stage("Deploy to Kubernetes") {
-            steps {
-                script {
-                    dir('./k8s') {
-                        withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: '', contextName: '', credentialsId: '88a9f11c-11e5-4bdb-b3bd-f63dba417648', namespace: 'gerald-env', serverUrl: '']]) {
-                            sh "sed -i 's|PLEASE_REPLACE_ME|$IMAGE_NAME|g' deployment.yaml"
-                            sh "kubectl apply -f ."
-                        }
-                    }
-                }
-            }
-       }
+    //    stage("Deploy to Kubernetes") {
+    //         steps {
+    //             script {
+    //                 dir('./k8s') {
+    //                     withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: '', contextName: '', credentialsId: '88a9f11c-11e5-4bdb-b3bd-f63dba417648', namespace: 'gerald-env', serverUrl: '']]) {
+    //                         sh "sed -i 's|PLEASE_REPLACE_ME|$IMAGE_NAME|g' deployment.yaml"
+    //                         sh "kubectl apply -f ."
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //    }
     }
 }
